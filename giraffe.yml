@@ -1,0 +1,56 @@
+# YAML Ain't Markup Language
+
+# yaml is a data serialization Language.
+# can be used to define key value pairs.
+# like:
+#   - Variables 
+#   - Lists
+#   - Objects   
+
+# yaml is similar to json
+# exept yaml places emphasis readability and user friendliness
+
+# extension : .yml , .yaml
+
+# define a person object
+# tab defines the scope
+person:
+    name: $name "mike" # anchoring value $name
+    occupation: 'programmer'
+    age: !!float 23 # !!float = convert integer to floating number
+    gpa: !!str 3.5 # !!str = convert floating number to string
+    fav_num: 1e+10
+    male: true
+    birthday: 1994-02-06 14:33:22 #ISO 8601
+    flaws: null
+    hobbies: # list items # list uses hyphen -
+        - hiking
+        - movies
+        - riding bike
+    movies: ["DArk Knight", "Good Will Hunting"] # alternative list
+    friends: # list with objects
+        - name: "Steph"             
+        - age: 22
+        - {name: "Addam" , age: 22} # equivalent way of writing
+        -
+            name: "joe"
+            age: 22 # equibalent way of writing
+        description: > # tells yaml to render the text in one line
+            Lorem ipsum dolor sit amet, consectetur adipiscing 
+            elit. Nunc elementum, ante nec interdum ultricies, 
+            velit dolor facilisis lorem, eu posuere tortor dolor 
+            sit amet diam. Etiam ut sem vulputate, fringilla nibh 
+            vel, congue odio. Etiam convallis risus eget nunc 
+        signature: | # preserve formatting
+            Mike
+            Giraffe Academy
+            email - giraffeacademy@gmail.com
+        id: *name # return anchored value from $name
+        
+        base: $base
+            var1: value1
+        
+        foo:
+            <<: *base # <<:*anchor  returns properties of anchored object $base foo: var1: value1
+            var2: value2
+
